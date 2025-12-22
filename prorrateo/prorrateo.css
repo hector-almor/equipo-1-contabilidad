@@ -1,0 +1,366 @@
+/* Fuente y márgenes generales */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #dcf4ffc7;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* Contenedor con scroll horizontal si la tabla es muy ancha */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    border: 1px solid #9fbdff;
+    padding: 10px;
+    background: #ffffffd5;
+}
+
+/* Tabla principal */
+#tabla-prorrateo {
+    width: 100%;
+    max-width: 1200px;       /* límite máximo de ancho */
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.9rem;       /* texto más compacto */
+}
+
+/* Encabezados y celdas */
+#tabla-prorrateo th,
+#tabla-prorrateo td {
+    border: 1px solid #333;
+    padding: 6px;
+    text-align: center;
+    white-space: nowrap;     /* evita saltos de línea en nombres de columnas */
+}
+
+/* Encabezados */
+#tabla-prorrateo th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Inputs dentro de la tabla */
+#tabla-prorrateo input {
+    width: 70px;             /* ancho fijo más pequeño */
+    padding: 4px;
+    font-size: 0.85rem;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+/* Fila de totales resaltada */
+#rowTotal td {
+    font-weight: bold;
+    background-color: #e6f7ff;
+}
+
+/* Formularios arriba de la tabla */
+form {
+    margin-bottom: 20px;
+    background: #deedf3d0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+form label {
+    margin-right: 15px;
+    display: inline-block;
+}
+
+form input {
+    width: 100px;
+    padding: 4px;
+    margin-left: 5px;
+    font-size: 0.85rem;
+}
+
+button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-container { 
+    margin-top: 20px; 
+    text-align: center; 
+}
+
+button:hover {
+    background-color: #2e3cff;
+}
+
+
+/* Tabla Prorrateo 2 */
+#tablaProrrateo2 {
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 0.9rem;
+    background-color: #fff;
+}
+
+/* Encabezados y celdas */
+#tablaProrrateo2 th,
+#tablaProrrateo2 td {
+    border: 1px solid #333;
+    padding: 6px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Encabezados */
+#tablaProrrateo2 th {
+    background-color: #eaeaea;
+    font-weight: bold;
+}
+
+/* Inputs dentro de la tabla 2 */
+#tablaProrrateo2 input {
+    width: 70px;
+    padding: 4px;
+    font-size: 0.85rem;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+/* Fila de saldos iniciales */
+#rowSaldos td {
+    font-weight: bold;
+    background-color: #f9f9f9;
+}
+
+/* Fila de totales resaltada */
+#rowTotal2 td {
+    font-weight: bold;
+    background-color: #d9f7d9; /* verde suave para diferenciar */
+}
+
+/* Celdas negativas (valores entre paréntesis) */
+#tablaProrrateo2 td.negative {
+    color: #c00;
+    font-weight: bold;
+}
+
+/* Formularios de bases */
+#basesProrrateo2 {
+    margin: 20px 0;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#basesProrrateo2 label {
+    margin-right: 15px;
+    display: inline-block;
+}
+
+#basesProrrateo2 input {
+    width: 100px;
+    padding: 4px;
+    margin-left: 5px;
+    font-size: 0.85rem;
+}
+
+/* Contenedor general */
+#tablaCostosFinal {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Tabla */
+#costosFinales {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Encabezados */
+#costosFinales th {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Celdas */
+#costosFinales td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Inputs dentro de la tabla */
+#costosFinales input {
+    width: 80px;
+    padding: 5px;
+    text-align: right;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+/* Filas alternas */
+#costosFinales tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Fila de totales */
+#rowTotalCostos {
+    background-color: #34495e;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Celda de gran total */
+#granTotalCostos {
+    font-weight: bold;
+    background-color: #27ae60;
+    color: #fff;
+}
+
+/* Botón de cálculo */
+#tablaCostosFinal .btn-container {
+    margin-top: 15px;
+    text-align: right;
+}
+
+#tablaCostosFinal button {
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#tablaCostosFinal button:hover {
+    background-color: #1f6391;
+}
+
+/* Contenedor general */
+#tablaCostosUnitarios {
+    margin-top: 25px;
+    padding: 15px;
+    background: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Título */
+#tablaCostosUnitarios h3 {
+    font-family: Arial, sans-serif;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Texto del costo unitario */
+#tablaCostosUnitarios p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+/* Tabla */
+#costosOrdenes {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Encabezados */
+#costosOrdenes th {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Celdas */
+#costosOrdenes td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Inputs de unidades */
+#costosOrdenes input {
+    width: 80px;
+    padding: 5px;
+    text-align: right;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+/* Filas alternas */
+#costosOrdenes tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+/* Fila de costos */
+#rowCostos {
+    background-color: #ecf0f1;
+    font-weight: bold;
+}
+
+/* Celda de total de costos por orden */
+#totalCostosOrden {
+    background-color: #27ae60;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Celda de total de unidades */
+#totalUnidades {
+    font-weight: bold;
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Botón */
+#tablaCostosUnitarios .btn-container {
+    margin-top: 15px;
+    text-align: right;
+}
+
+#tablaCostosUnitarios button {
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#tablaCostosUnitarios button:hover {
+    background-color: #1f6391;
+}
+
+
+/*Quitar flechitas de los inputs ^v */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}

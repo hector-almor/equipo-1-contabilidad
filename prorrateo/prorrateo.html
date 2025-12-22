@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prorrateo de Costos</title>
+    <link rel="stylesheet" href="prorrateo.css">
+</head>
+<body>
+    <h1>Prorrateo de Costos</h1>
+
+    <h2>Prorrateo Primario</h2>
+
+    <form id="fabrica-form"> 
+        <h3>Costos de Fábrica</h3> 
+        <label>Renta: <input type="number" id="renta" required></label> 
+        <label>Base Renta: <input type="number" id="baseRenta" required></label><br> 
+        <label>Depreciaciones: <input type="number" id="deprec" required></label> 
+        <label>Base Depreciaciones: <input type="number" id="baseDeprec" required></label><br> 
+        <label>Servicios Públicos: <input type="number" id="servicios" required></label> 
+        <label>Base Servicios: <input type="number" id="baseServicios" required></label><br> 
+        <label>Seguros y Fianzas: <input type="number" id="seguros" required></label> 
+        <label>Base Seguros: <input type="number" id="baseSeguros" required></label><br> 
+        <button type="submit">Agregar</button> 
+    </form>
+
+    <!-- Formulario para MPI --> 
+    <form id="mpi-form"> 
+        <h3>Costos MPI por Departamento</h3>
+        <label>A: <input type="number" id="mpiA"></label>
+        <label>B: <input type="number" id="mpiB"></label>
+        <label>C: <input type="number" id="mpiC"></label>
+        <label>D: <input type="number" id="mpiD"></label> 
+        <label>E: <input type="number" id="mpiE"></label>
+        <label>F: <input type="number" id="mpiF"></label>
+        <label>G: <input type="number" id="mpiG"></label>
+        <label>H: <input type="number" id="mpiH"></label>
+        <label>I: <input type="number" id="mpiI"></label>
+        <label>J: <input type="number" id="mpiJ"></label>
+        <label>K: <input type="number" id="mpiK"></label> 
+        <button type="submit">Agregar MPI</button> 
+    </form> 
+    <!-- Formulario para MOI -->
+    <form id="moi-form">
+        <h3>Costos MOI por Departamento</h3>
+        <label>A: <input type="number" id="moiA"></label>
+        <label>B: <input type="number" id="moiB"></label>
+        <label>C: <input type="number" id="moiC"></label>
+        <label>D: <input type="number" id="moiD"></label>
+        <label>E: <input type="number" id="moiE"></label>
+        <label>F: <input type="number" id="moiF"></label>
+        <label>G: <input type="number" id="moiG"></label>
+        <label>H: <input type="number" id="moiH"></label>
+        <label>I: <input type="number" id="moiI"></label>
+        <label>J: <input type="number" id="moiJ"></label>
+        <label>K: <input type="number" id="moiK"></label>
+        <button type="submit">Agregar MOI</button>
+    </form>
+
+
+    <div class="table-container">
+    <table id="tabla-prorrateo">
+        <thead>
+        <tr>
+            <th>Concepto/Depto</th>
+            <th>Fábrica</th>
+            <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th>
+            <th>F</th><th>G</th><th>H</th><th>I</th><th>J</th><th>K</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- MPI -->
+        <tr id="rowMPI">
+            <td>MPI</td> 
+            <td>-</td> 
+            <td id="mpiAcell"></td> 
+            <td id="mpiBcell"></td> 
+            <td id="mpiCcell"></td> 
+            <td id="mpiDcell"></td> 
+            <td id="mpiEcell"></td> 
+            <td id="mpiFcell"></td> 
+            <td id="mpiGcell"></td> 
+            <td id="mpiHcell"></td> 
+            <td id="mpiIcell"></td> 
+            <td id="mpiJcell"></td> 
+            <td id="mpiKcell"></td> 
+            <td id="totalMPI"></td> 
+        </tr> 
+        
+        <!-- MOI --> 
+        <tr id="rowMOI"> 
+            <td>MOI</td> 
+            <td>-</td> 
+            <td id="moiAcell"></td> 
+            <td id="moiBcell"></td> 
+            <td id="moiCcell"></td> 
+            <td id="moiDcell"></td> 
+            <td id="moiEcell"></td> 
+            <td id="moiFcell"></td> 
+            <td id="moiGcell"></td> 
+            <td id="moiHcell"></td> 
+            <td id="moiIcell"></td> 
+            <td id="moiJcell"></td> 
+            <td id="moiKcell"></td> 
+            <td id="totalMOI"></td> 
+        </tr>
+
+        <!-- Renta -->
+        <tr id="rowRenta">
+            <td>Renta</td>
+            <td id="fabricaRenta"></td> <!-- ya no es input -->
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td><input type="number" class="dist" data-concepto="renta"></td>
+            <td id="totalRenta"></td>
+        </tr>
+
+        <!-- Depreciaciones -->
+        <tr id="rowDeprec">
+            <td>Depreciaciones</td>
+            <td id="fabricaDeprec"></td> <!-- ya no es input -->
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td><input type="number" class="dist" data-concepto="deprec"></td>
+            <td id="totalDeprec"></td>
+        </tr>
+
+        <!-- Servicios Públicos -->
+        <tr id="rowServicios">
+            <td>Servicios Públicos</td>
+            <td id="fabricaServicios"></td> <!-- ya no es input -->
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td><input type="number" class="dist" data-concepto="servicios"></td>
+            <td id="totalServicios"></td>
+        </tr>
+
+        <!-- Seguros y Fianzas -->
+        <tr id="rowSeguros">
+            <td>Seguros y Fianzas</td>
+            <td id="fabricaSeguros"></td> <!-- ya no es input -->
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td><input type="number" class="dist" data-concepto="seguros"></td>
+            <td id="totalSeguros"></td>
+        </tr>
+
+        <!-- Total -->
+        <tr id="rowTotal"> 
+            <td>Total</td> 
+            <td id="totalFabrica"></td> 
+            <td id="totalColA"></td> 
+            <td id="totalColB"></td> 
+            <td id="totalColC"></td> 
+            <td id="totalColD"></td> 
+            <td id="totalColE"></td> 
+            <td id="totalColF"></td> 
+            <td id="totalColG"></td> 
+            <td id="totalColH"></td> 
+            <td id="totalColI"></td> 
+            <td id="totalColJ"></td> 
+            <td id="totalColK"></td> 
+            <td id="granTotal"></td> 
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="btn-container"> 
+        <button id="btnCalcularTodo" type="button" onclick="calcularProrrateo()">Calcular Todo</button> 
+    </div>
+
+<!-- Prorrateo 2-->
+<!-- Formularios de bases para F–K -->
+    <div id="basesProrrateo2" style="display:none;">
+    <h3>Bases Prorrateo 2</h3>
+    <form id="basesForm2">
+        <label>Mantenimiento (F): <input type="number" id="baseF"></label>
+        <label>Control Calidad (G): <input type="number" id="baseG"></label>
+        <label>Almacén (H): <input type="number" id="baseH"></label>
+        <label>Administración (I): <input type="number" id="baseI"></label>
+        <label>Seguridad (J): <input type="number" id="baseJ"></label>
+        <label>Dirección General (K): <input type="number" id="baseK"></label>
+        <button type="button" onclick="guardarBasesProrrateo2()">Guardar bases</button>
+    </form>
+    </div>
+
+    <!-- Botón independiente para ejecutar el cálculo -->
+    <div class="btn-container" style="display:none;" id="btnProrrateo2">
+    <button type="button" onclick="ejecutarProrrateo2()">Ejecutar Prorrateo 2</button>
+    </div>
+
+    <!-- Tabla Prorrateo 2 -->
+    <div class="table-container">
+    <table id="tablaProrrateo2" style="display:none;">
+    <tr>
+        <th></th>
+        <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th>
+        <th>F</th><th>G</th><th>H</th><th>I</th><th>J</th><th>K</th>
+        <th>Total</th>
+    </tr>
+
+    <!-- Saldos iniciales -->
+    <tr id="rowSaldos">
+        <td>Saldos iniciales</td>
+        <td id="saldoA"></td><td id="saldoB"></td><td id="saldoC"></td><td id="saldoD"></td><td id="saldoE"></td>
+        <td id="saldoF"></td><td id="saldoG"></td><td id="saldoH"></td><td id="saldoI"></td><td id="saldoJ"></td><td id="saldoK"></td>
+        <td id="saldoTotal"></td>
+    </tr>
+
+    <!-- Mantenimiento (F) -->
+    <tr id="rowMantenimiento">
+        <td>Mantenimiento (F)</td>
+        <td><input id="mantenimientoA" type="number"></td>
+        <td><input id="mantenimientoB" type="number"></td>
+        <td><input id="mantenimientoC" type="number"></td>
+        <td><input id="mantenimientoD" type="number"></td>
+        <td><input id="mantenimientoE" type="number"></td>
+        <td id="mantenimientoFcell" data-col="F"></td>
+        <td data-col="G"></td><td data-col="H"></td><td data-col="I"></td><td data-col="J"></td><td data-col="K"></td>
+        <td id="mantenimientoTotal"></td>
+    </tr>
+
+    <!-- Control Calidad (G) -->
+    <tr id="rowCalidad">
+        <td>Control Calidad (G)</td>
+        <td><input id="calidadA" type="number"></td>
+        <td><input id="calidadB" type="number"></td>
+        <td><input id="calidadC" type="number"></td>
+        <td><input id="calidadD" type="number"></td>
+        <td><input id="calidadE" type="number"></td>
+        <td data-col="F"></td>
+        <td id="calidadGcell" data-col="G"></td>
+        <td data-col="H"></td><td data-col="I"></td><td data-col="J"></td><td data-col="K"></td>
+        <td id="calidadTotal"></td>
+    </tr>
+
+    <!-- Almacén (H) -->
+    <tr id="rowAlmacen">
+        <td>Almacén (H)</td>
+        <td><input id="almacenA" type="number"></td>
+        <td><input id="almacenB" type="number"></td>
+        <td><input id="almacenC" type="number"></td>
+        <td><input id="almacenD" type="number"></td>
+        <td><input id="almacenE" type="number"></td>
+        <td data-col="F"></td><td data-col="G"></td>
+        <td id="almacenHcell" data-col="H"></td>
+        <td data-col="I"></td><td data-col="J"></td><td data-col="K"></td>
+        <td id="almacenTotal"></td>
+    </tr>
+
+    <!-- Administración (I) -->
+    <tr id="rowAdmin">
+        <td>Administración (I)</td>
+        <td><input id="adminA" type="number"></td>
+        <td><input id="adminB" type="number"></td>
+        <td><input id="adminC" type="number"></td>
+        <td><input id="adminD" type="number"></td>
+        <td><input id="adminE" type="number"></td>
+        <td data-col="F"></td><td data-col="G"></td><td data-col="H"></td>
+        <td id="adminIcell" data-col="I"></td>
+        <td data-col="J"></td><td data-col="K"></td>
+        <td id="adminTotal"></td>
+    </tr>
+
+    <!-- Seguridad (J) -->
+    <tr id="rowSeguridad">
+        <td>Seguridad (J)</td>
+        <td><input id="seguridadA" type="number"></td>
+        <td><input id="seguridadB" type="number"></td>
+        <td><input id="seguridadC" type="number"></td>
+        <td><input id="seguridadD" type="number"></td>
+        <td><input id="seguridadE" type="number"></td>
+        <td data-col="F"></td><td data-col="G"></td><td data-col="H"></td><td data-col="I"></td>
+        <td id="seguridadJcell" data-col="J"></td>
+        <td data-col="K"></td>
+        <td id="seguridadTotal"></td>
+    </tr>
+
+    <!-- Dirección General (K) sin inputs -->
+    <tr id="rowDireccion">
+        <td>Dirección General (K)</td>
+        <td id="direccionAcell" data-col="A"></td>
+        <td id="direccionBcell" data-col="B"></td>
+        <td id="direccionCcell" data-col="C"></td>
+        <td id="direccionDcell" data-col="D"></td>
+        <td id="direccionEcell" data-col="E"></td>
+        <td data-col="F"></td><td data-col="G"></td><td data-col="H"></td><td data-col="I"></td><td data-col="J"></td>
+        <td id="direccionKcell" data-col="K"></td>
+        <td id="direccionTotal"></td>
+    </tr>
+
+    <!-- Totales -->
+    <tr id="rowTotal2">
+        <td>Total</td>
+        <td id="totalCol2A"></td><td id="totalCol2B"></td><td id="totalCol2C"></td><td id="totalCol2D"></td><td id="totalCol2E"></td>
+        <td id="totalCol2F">0.00</td><td id="totalCol2G">0.00</td><td id="totalCol2H">0.00</td><td id="totalCol2I">0.00</td><td id="totalCol2J">0.00</td><td id="totalCol2K">0.00</td>
+        <td id="granTotal2"></td>
+    </tr>
+    </table>
+    </div>
+
+
+    <div id="tablaCostosFinal" style="display:none;">
+    <h3>Prorrateo 3 - Costos Finales</h3>
+
+    <!-- Inputs externos para MPD -->
+    <div id="basesMPD">
+        <h4>Distribución de MPD</h4>
+        <label>Porcentaje A: <input type="number" id="mpdBaseA" step="0.01"></label>
+        <label>Porcentaje B: <input type="number" id="mpdBaseB" step="0.01"></label>
+        <label>Porcentaje C: <input type="number" id="mpdBaseC" step="0.01"></label>
+        <label>Porcentaje D: <input type="number" id="mpdBaseD" step="0.01"></label>
+        <label>Porcentaje E: <input type="number" id="mpdBaseE" step="0.01"></label>
+        <label>Total MPD: <input type="number" id="totalMPD"></label>
+        <button type="button" onclick="calcularMPD()">Calcular MPD</button>
+    </div>
+
+    <table id="costosFinales">
+        <tr>
+        <th>Concepto/Depto</th>
+        <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th>
+        <th>Total</th>
+        </tr>
+
+        <!-- MPD -->
+        <tr id="rowMPD">
+        <td>MPD</td>
+        <td id="mpdA"></td>
+        <td id="mpdB"></td>
+        <td id="mpdC"></td>
+        <td id="mpdD"></td>
+        <td id="mpdE"></td>
+        <td id="totalMPDrow"></td>
+        </tr>
+
+        <!-- MOD -->
+        <tr id="rowMOD">
+        <td>MOD</td>
+        <td><input id="modA" type="number"></td>
+        <td><input id="modB" type="number"></td>
+        <td><input id="modC" type="number"></td>
+        <td><input id="modD" type="number"></td>
+        <td><input id="modE" type="number"></td>
+        <td id="totalMODrow"></td>
+        </tr>
+
+        <!-- C.I -->
+        <tr id="rowCI">
+        <td>C.I</td>
+        <td id="ciA"></td>
+        <td id="ciB"></td>
+        <td id="ciC"></td>
+        <td id="ciD"></td>
+        <td id="ciE"></td>
+        <td id="totalCIrow"></td>
+        </tr>
+
+        <!-- Total de costos -->
+        <tr id="rowTotalCostos">
+        <td>Total de costos</td>
+        <td id="totalA"></td>
+        <td id="totalB"></td>
+        <td id="totalC"></td>
+        <td id="totalD"></td>
+        <td id="totalE"></td>
+        <td id="granTotalCostos"></td>
+        </tr>
+    </table>
+
+    <div class="btn-container">
+        <button type="button" onclick="calcularCostosFinales()">Calcular Costos Finales</button>
+    </div>
+    </div>
+
+    <div id="tablaCostosUnitarios" style="display:none;">
+    <h3>Costo Unitario por Orden</h3>
+
+    <!-- Celda para mostrar el costo unitario -->
+    <p>Costo unitario: <span id="costoUnitario"></span></p>
+
+    <table id="costosOrdenes">
+        <tr>
+        <th>Orden</th>
+        <th>MAM-001</th>
+        <th>MAM-002</th>
+        <th>MAM-003</th>
+        <th>Total</th>
+        </tr>
+
+        <!-- Fila de unidades -->
+        <tr id="rowUnidades">
+        <td>Unidades</td>
+        <td><input id="unidades1" type="number"></td>
+        <td><input id="unidades2" type="number"></td>
+        <td><input id="unidades3" type="number"></td>
+        <td id="totalUnidades"></td>
+        </tr>
+
+        <!-- Fila de costos -->
+        <tr id="rowCostos">
+        <td>Costo</td>
+        <td id="costo1"></td>
+        <td id="costo2"></td>
+        <td id="costo3"></td>
+        <td id="totalCostosOrden"></td>
+        </tr>
+    </table>
+
+    <div class="btn-container">
+        <button type="button" onclick="calcularCostosUnitarios()">Calcular Costos Unitarios</button>
+    </div>
+    </div>
+
+    <script src="prorrateo.js"></script>
+</body>
+</html>
