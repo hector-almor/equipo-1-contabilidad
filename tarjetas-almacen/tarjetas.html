@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparativa Contable de Inventarios</title>
+    <link rel="stylesheet" href="tarjetas.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="control-panel">
+            <h2>Registro Maestro de Movimientos</h2>
+            <div class="form-grid">
+                <div class="field">
+                    <label>Fecha</label>
+                    <input type="date" id="fecha">
+                </div>
+                <div class="field">
+                    <label>Referencia</label>
+                    <input type="text" id="orden" placeholder="Ej: Compra 01">
+                </div>
+                <div class="field">
+                    <label>Movimiento</label>
+                    <select id="tipo" onchange="toggleCosto()">
+                        <option value="entrada">Entrada (Compra)</option>
+                        <option value="salida">Salida (Consumo)</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Cantidad</label>
+                    <input type="number" id="cantidad" step="0.01">
+                </div>
+                <div class="field">
+                    <label>Costo Unitario</label>
+                    <input type="number" id="costo" step="0.01">
+                </div>
+            </div>
+            <div class="actions">
+                <button onclick="registrarMovimiento()" class="btn-add">Registrar</button>
+                <button onclick="reiniciar()" class="btn-reset">Limpiar Todo</button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <h2 class="method-title peps">PEPS (Primero en Entrar, Primero en Salir)</h2>
+            <div class="grid-table" id="gridPEPS"></div>
+            <div class="table-footer">
+                <div>Costo Total Salidas: $ <span id="totalSalidaPEPS">0.00</span></div>
+                <div>Valor Existencia: $ <span id="valorFinalPEPS">0.00</span></div>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <h2 class="method-title ueps">UEPS (Último en Entrar, Primero en Salir)</h2>
+            <div class="grid-table" id="gridUEPS"></div>
+            <div class="table-footer">
+                <div>Costo Total Salidas: $ <span id="totalSalidaUEPS">0.00</span></div>
+                <div>Valor Existencia: $ <span id="valorFinalUEPS">0.00</span></div>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <h2 class="method-title promedio">Costo Promedio Ponderado</h2>
+            <div class="grid-table" id="gridPromedio"></div>
+            <div class="table-footer">
+                <div>Costo Total Salidas: $ <span id="totalSalidaPromedio">0.00</span></div>
+                <div>Valor Existencia: $ <span id="valorFinalPromedio">0.00</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tarjetas.js"></script>
+</body>
+</html>
