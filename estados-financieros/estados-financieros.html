@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo de Nómina</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          <i class="fas fa-sack-dollar"></i>Generación de Estados Financieros de
+          producto
+        </h1>
+      </header>
+
+      <main>
+        <div class="content-wrapper">
+          <section class="form-section">
+            <h2><i class="fas fa-truck"></i> Datos del Producto</h2>
+            <form id="estados-form">
+              <div class="form-group">
+                <label for="nombre"
+                  ><i class="fas fa-circle-exclamation"></i> Nombre del
+                  Producto:</label
+                >
+                <input
+                  type="text"
+                  id="nombre"
+                  placeholder="Ingrese el nombre como indicado en el proceso"
+                  required
+                />
+                <label for="presentacion"
+                  ><i class="fas fa-hand"></i> Presentación:</label
+                >
+                <input
+                  type="text"
+                  id="presentacion"
+                  placeholder="Ingrese la presentacion del producto"
+                  required
+                />
+                <span class="hint">Ej. 100g, 1.5Lt, etc.</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="range-start"
+                    ><i class="fas fa-calendar-times"></i> Fecha inicial del
+                    periodo:</label
+                  >
+                  <input type="date" id="range-start" name="range-start" />
+                </div>
+
+                <div class="form-group">
+                  <label for="range-end"
+                    ><i class="fas fa-calendar-times"></i> Fecha final del
+                    periodo:</label
+                  >
+                  <input type="date" id="range-end" name="range-end" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="excercize"
+                  ><i class="fas fa-circle-exclamation"></i> Ejercicio
+                  fiscal:</label
+                >
+                <input
+                  type="text"
+                  id="excercize"
+                  placeholder="Ingrese el ejercicio del periodo"
+                  required
+                />
+                <span class="hint">Ej. 2025</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="unitary"
+                    ><i class="fas fa-cash-register"></i> Precio unitario de
+                    ventas:</label
+                  >
+                  <div class="input-with-icon">
+                    <span class="currency">$</span>
+                    <input
+                      type="number"
+                      id="unitary"
+                      placeholder="0.00"
+                      min="0"
+                      step="0.01"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="sales"
+                    ><i class="fas fa-bag-shopping"></i> Volumen Estimado de
+                    Ventas (Unidades):</label
+                  >
+                  <input
+                    type="text"
+                    id="sales"
+                    placeholder="Ingrese la cantidad de unidades vendidas"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="prime-mat-cost"
+                    ><i class="fas fa-money-check-alt"></i> Costo de materia
+                    prima directa:</label
+                  >
+                  <input
+                    type="text"
+                    id="prime-mat-cost"
+                    placeholder="Ingrese el costo de la materia prima"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="man-hand-cost"
+                    ><i class="fas fa-money-check-alt"></i> Costo de mano de
+                    obra directa:</label
+                  >
+                  <input
+                    type="text"
+                    id="man-hand-cost"
+                    placeholder="Ingrese el costo de la mano de obra"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="ind-costs"
+                    ><i class="fas fa-money-check-alt"></i> Costo indirectos de
+                    fabricación:</label
+                  >
+                  <input
+                    type="text"
+                    id="ind-costs"
+                    placeholder="Ingrese los costos indirectos de la fabricación"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="depreciation"
+                    ><i class="fas fa-money-check-alt"></i> Depreciación /
+                    Mantenimiento:</label
+                  >
+                  <input
+                    type="text"
+                    id="depreciation"
+                    placeholder="Ingrese los gastos de depreciación o mantenimiento"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="inv-variation"
+                    ><i class="fas fa-money-check-alt"></i> Variacion de
+                    inventarios:</label
+                  >
+                  <select id="inv-variation" required>
+                    <option value="">Seleccione</option>
+                    <option value="positive">Positivo</option>
+                    <option value="negative">Negativo</option>
+                    <option value="not">Cero</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-buttons">
+                <button type="submit" class="btn btn-calculate">
+                  <i class="fas fa-calculator"></i> Calcular Estados
+                </button>
+                <button type="button" id="limpiar" class="btn btn-clear">
+                  <i class="fas fa-broom"></i> Limpiar Formulario
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <section class="results-section">
+            <h2><i class="fas fa-file-invoice-dollar"></i> Resultados</h2>
+
+            <div class="results-container">
+              <div class="result-category">
+                <h3>
+                  <i class="fas fa-file-invoice"></i> Estado de Resultados
+                </h3>
+                <div class="result-item">
+                  <span>Ingresos por Ventas:</span>
+                  <span id="sales-gross">$0.00</span>
+                </div>
+                <div class="result-item">
+                  <span>Costo de Ventas:</span>
+                  <span id="sales-cost">$0.00</span>
+                </div>
+                <div class="result-item">
+                  <span>Utilidad Bruta:</span>
+                  <span id="brute-utility">$0.00</span>
+                </div>
+                <div class="result-item">
+                  <span>Gastos operativos:</span>
+                  <span id="opp-costs">$0.00</span>
+                </div>
+                <div class="result-item total">
+                  <span>Utilidad neta:</span>
+                  <span id="total-results">$0.00</span>
+                </div>
+              </div>
+
+              <div class="result-category">
+                <h3>
+                  <i class="fas fa-file-invoice"></i> Estado de Costos de
+                  Producción
+                </h3>
+                <div class="result-item">
+                  <span>Materia prima directa:</span>
+                  <span id="prime-mat-cost-res">$0.00</span>
+                </div>
+                <div class="result-item">
+                  <span>Mano de Obra Directa:</span>
+                  <span id="man-hand-cost-res">$0.00</span>
+                </div>
+                <div class="result-item">
+                  <span>CIF:</span>
+                  <span id="cif-res">$0.00</span>
+                </div>
+                <div class="result-item">
+                  <span>Depreciación:</span>
+                  <span id="depreciation-res">$0.00</span>
+                </div>
+                <div class="result-item total">
+                  <span>Total De Costo de Producción:</span>
+                  <span id="total-costs">$0.00</span>
+                </div>
+                <div class="result-item total">
+                  <span>Costo de Ventas:</span>
+                  <span id="sales-cost">$0.00</span>
+                </div>
+              </div>
+
+              <div class="result-category">
+                <h3>
+                  <i class="fas fa-file-invoice"></i> Estado de Situación
+                  FInanciera
+                </h3>
+                <div class="result-item">
+                  <span>Activo Asignado:</span>
+                  <span id="assigned-active">$0.00</span>
+                </div>
+                <div class="result-item">
+                  <span>Pasivo Asignado:</span>
+                  <span id="assigned-pasive">$0.00</span>
+                </div>
+                <div class="result-item">
+                  <span>Capital Contable:</span>
+                  <span id="countable-cap">$0.00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button id="imprimir" class="btn btn-print" disabled>
+                <i class="fas fa-print"></i> Exportar Archivo (.xlsx)
+              </button>
+              <button id="imprimir" class="btn btn-print" disabled>
+                <i class="fas fa-print"></i> Exportar Archivo (.pdf)
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <p>Sistema de Cálculo de Estados &copy; 2023 - Empresa Gamesa</p>
+        <p class="disclaimer">
+          Este sistema genera estados financieros con fines académicos. Las
+          cifras presentadas son estimaciones basadas en información pública y
+          supuestos definidos por el usuario
+        </p>
+      </footer>
+    </div>
+
+    <script src="js/estados-financieros.js"></script>
+  </body>
+</html>
