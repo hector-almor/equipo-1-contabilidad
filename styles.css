@@ -14,11 +14,22 @@ body {
 }
 
 /* Encabezados */
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   color: #2c3e50;
   margin-bottom: 0.5em;
   font-weight: 600;
 }
+
+h1{
+  color: #2c3e50;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  /* margin-left: 30px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 p {
   margin-bottom: 1em;
@@ -156,4 +167,12 @@ footer ul li span {
 html, body {
   margin: 0;
   padding: 0;
+}
+
+.texto{
+  margin-left: 30px;
+}
+
+ul, li{
+  margin-left: 30px;
 }
