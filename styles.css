@@ -145,3 +145,15 @@ footer ul li span {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
+
+
+/*Correciones para el margen superior*/
+.menu {
+  margin-top: 0;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
