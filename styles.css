@@ -1,0 +1,147 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+/* Botones genéricos */
+button, .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Variantes de botones */
+.btn-primary {
+  background: #3498db;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #2980b9;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #c0392b;
+}
+
+/* Links */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Menú principal horizontal */
+.menu {
+  background: linear-gradient(135deg, #2c3e50, #4a6491);
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  position: relative;
+}
+
+.menu > li {
+  position: relative;
+  margin: 0 15px;
+}
+
+.menu > li > a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  transition: color 0.3s;
+}
+
+.menu > li > a:hover {
+  color: #d68910;
+}
+
+/* Pie de página fijo con fondo oscuro y estilo similar al navbar */
+footer {
+  width: 100%;
+  background: linear-gradient(135deg, #2c3e50, #4a6491);;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 60px;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+footer ul li {
+  margin: 0 15px;
+  font-size: 0.9em;
+  color: #f0e6f6;
+}
+
+footer ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+footer ul li a:hover {
+  color: #d68910;
+}
+
+footer ul li span {
+  font-style: italic;
+  color: #cccccc;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
