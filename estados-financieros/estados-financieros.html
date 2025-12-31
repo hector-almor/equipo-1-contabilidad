@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cálculo de Nómina</title>
+    <title>Estados financieros</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
@@ -60,7 +60,7 @@
                   type="text"
                   id="nombre"
                   placeholder="Ingrese el nombre como indicado en el proceso"
-                  required
+                  
                 />
                 <label for="presentacion"
                   ><i class="fas fa-hand"></i> Presentación:</label
@@ -69,7 +69,7 @@
                   type="text"
                   id="presentacion"
                   placeholder="Ingrese la presentacion del producto"
-                  required
+                  
                 />
                 <span class="hint">Ej. 100g, 1.5Lt, etc.</span>
               </div>
@@ -101,7 +101,7 @@
                   type="text"
                   id="excercize"
                   placeholder="Ingrese el ejercicio del periodo"
-                  required
+                  
                 />
                 <span class="hint">Ej. 2025</span>
               </div>
@@ -120,7 +120,7 @@
                       placeholder="0.00"
                       min="0"
                       step="0.01"
-                      required
+                      
                     />
                   </div>
                 </div>
@@ -133,7 +133,7 @@
                     type="text"
                     id="sales"
                     placeholder="Ingrese la cantidad de unidades vendidas"
-                    required
+                    
                   />
                 </div>
               </div>
@@ -148,7 +148,7 @@
                     type="text"
                     id="prime-mat-cost"
                     placeholder="Ingrese el costo de la materia prima"
-                    required
+                    
                   />
                 </div>
 
@@ -161,20 +161,20 @@
                     type="text"
                     id="man-hand-cost"
                     placeholder="Ingrese el costo de la mano de obra"
-                    required
+                    
                   />
                 </div>
 
                 <div class="form-group">
                   <label for="ind-costs"
-                    ><i class="fas fa-money-check-alt"></i> Costo indirectos de
+                    ><i class="fas fa-money-check-alt"></i> Costos indirectos de
                     fabricación:</label
                   >
                   <input
                     type="text"
                     id="ind-costs"
                     placeholder="Ingrese los costos indirectos de la fabricación"
-                    required
+                    
                   />
                 </div>
 
@@ -187,23 +187,23 @@
                     type="text"
                     id="depreciation"
                     placeholder="Ingrese los gastos de depreciación o mantenimiento"
-                    required
+                    
                   />
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="inv-variation"
                     ><i class="fas fa-money-check-alt"></i> Variacion de
                     inventarios:</label
                   >
-                  <select id="inv-variation" required>
+                  <select id="inv-variation" >
                     <option value="">Seleccione</option>
                     <option value="positive">Positivo</option>
                     <option value="negative">Negativo</option>
                     <option value="not">Cero</option>
                   </select>
                 </div>
-              </div>
+              </div> -->
 
               <div class="form-buttons">
                 <button type="submit" class="btn btn-calculate">
@@ -268,12 +268,12 @@
                   <span id="depreciation-res">$0.00</span>
                 </div>
                 <div class="result-item total">
-                  <span>Total De Costo de Producción:</span>
-                  <span id="total-costs">$0.00</span>
+                  <span>Costo incurrido:</span>
+                  <span id="costo-incurrido">$0.00</span>
                 </div>
                 <div class="result-item total">
-                  <span>Costo de Ventas:</span>
-                  <span id="sales-cost">$0.00</span>
+                  <span>Costo de lo vendido:</span>
+                  <span id="costo-vendido">$0.00</span>
                 </div>
               </div>
 
