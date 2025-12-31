@@ -176,3 +176,16 @@ html, body {
 ul, li{
   margin-left: 30px;
 }
+
+
+.titulo-centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo-centro img {
+  max-height: 120px;
+  margin: 0 15px;
+}
+
